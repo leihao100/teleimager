@@ -33,19 +33,19 @@ head_camera:
   # When enabled, aligned depth is published as raw uint16 (z16) bytes over a
   # dedicated ZMQ port. The client reshapes the bytes using `image_shape`.
   # Ignored for non-realsense camera types.
-  enable_depth: false
+  enable_depth: true
   depth_port: 55655
 
   # Type of camera:
   #   - "opencv"    → opencv driver
   #   - "realsense" → pyrealsense2 driver
   #   - "uvc"       → pyuvc driver
-  type: uvc
+  type: realsense
 
   # Image Format
   # image resolution: [height, width]
-  image_shape: [480, 1280]
-  binocular: true
+  image_shape: [480, 640]
+  binocular: false
   # frame per second
   fps: 30
 
@@ -63,7 +63,7 @@ head_camera:
   #   - type "opencv":    supports video_id, serial_number, physical_path
   #   - type "uvc":       supports video_id, serial_number, physical_path
   video_id: 0
-  serial_number: 01.00.00
+  serial_number: 254643063124
   physical_path: null
 
 # =====================================================

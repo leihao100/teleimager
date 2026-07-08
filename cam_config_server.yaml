@@ -29,6 +29,13 @@ head_camera:
   # webrtc codec preference, options: "vp8", "h264"
   webrtc_codec: h264
 
+  # Depth publishing (RealSense cameras only).
+  # When enabled, aligned depth is published as raw uint16 (z16) bytes over a
+  # dedicated ZMQ port. The client reshapes the bytes using `image_shape`.
+  # Ignored for non-realsense camera types.
+  enable_depth: false
+  depth_port: 55655
+
   # Type of camera:
   #   - "opencv"    → opencv driver
   #   - "realsense" → pyrealsense2 driver
@@ -68,6 +75,8 @@ left_wrist_camera:
   enable_webrtc: true
   webrtc_port : 60002
   webrtc_codec: h264
+  enable_depth: false
+  depth_port: 55656
   type: uvc
   image_shape: [480, 640]
   binocular: false
@@ -85,6 +94,8 @@ right_wrist_camera:
   enable_webrtc: true
   webrtc_port: 60003
   webrtc_codec: h264
+  enable_depth: false
+  depth_port: 55657
   type: uvc
   image_shape: [480, 640]
   binocular: false

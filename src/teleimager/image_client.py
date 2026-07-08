@@ -944,7 +944,7 @@ class ImageClient:
     
     def get_right_wrist_frame(self):
         return self._subscriber_manager.subscribe(self._host, self._cam_config['right_wrist_camera']['zmq_port'], request_bgr=self._request_bgr)
-        
+
     def close(self):
         if self._closed:
             return

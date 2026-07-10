@@ -44,3 +44,4 @@ build-backend = "setuptools.build_meta"
 [project.scripts]
 teleimager-test-server = "teleimager_test.image_server:main"
 teleimager-test-client = "teleimager_test.image_client:main"
+teleimager-test-depth = "teleimager_test.read_depth:main"

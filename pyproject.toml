@@ -1,0 +1,46 @@
+[project]
+name = "teleimager-test"
+version = "1.6.0"
+description = "TeleImager-Test: parallel test deployment (adds RealSense depth publish/subscribe) for unitree teleoperation"
+authors = [
+    { name = "silencht", email = "silencht@qq.com" }
+]
+license = { file = "LICENSE" }
+readme = "README.md"
+requires-python = ">=3.8,<3.12"
+dependencies = [
+    "logging_mp",
+    "opencv-python",
+    "numpy>=1.21,<2",
+    "pyyaml",
+    "pyzmq",
+]
+[project.optional-dependencies]
+# execute pip install -e ".[server]" to install server dependencies
+server = [
+    "aiohttp",
+    "aiortc",
+    "pupil-labs-uvc",
+]
+# execute pip install -e ".[realsense]" to enable RealSense (color + depth) support.
+# On x86 wheels install directly; on Jetson/aarch64 build pyrealsense2 from source instead.
+realsense = [
+    "pyrealsense2",
+]
+
+[project.urls]
+Homepage = "https://github.com/unitreerobotics/teleimager"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project.scripts]
+teleimager-test-server = "teleimager_test.image_server:main"
+teleimager-test-client = "teleimager_test.image_client:main"
